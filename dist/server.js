@@ -7,6 +7,9 @@ console.log(jobs);
 app.get("/", (req, res) => {
     res.send("job site api");
 });
+app.get("/jobs", (req, res) => {
+    res.json(jobs);
+});
 app.listen(port, () => {
     console.log(`listening on http://localhost:${port}`);
 });

@@ -11,6 +11,10 @@ app.get("/", (req: express.Request, res: express.Response) => {
   res.send("job site api");
 });
 
+app.get("/jobs", (req: express.Request, res: express.Response) => {
+  res.json(jobs);
+});
+
 app.listen(port, () => {
   console.log(`listening on http://localhost:${port}`);
 });
