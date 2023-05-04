@@ -1,6 +1,8 @@
 import express from "express";
 import fs from "fs";
+import cors from "cors";
 const app = express();
+app.use(cors());
 const port = 3005;
 const jobs = JSON.parse(fs.readFileSync("./src/data/jobs.json", "utf8"));
 console.log(jobs);
