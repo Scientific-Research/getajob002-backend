@@ -1,16 +1,16 @@
-import { createServer } from "http";
-import { mainContent } from "./content.js";
+import express from "express";
 import fs from "fs";
+
+const app = express();
 const port = 3005;
 
 const jobs = JSON.parse(fs.readFileSync("./src/data/jobs.json", "utf8"));
 console.log(jobs);
 
-createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text-plain" });
-  //   res.write(mainContent);
-  res.write(JSON.stringify(jobs));
-  res.end();
-}).listen(port);
+app.get("/", (req: express.Request, res: express.Response) => {
+  res.send("job site api");
+});
 
-console.log(`listening on http://localhost:${port}`);
+app.listen(port, () => {
+  console.log(`listening on http://localhost:${port}`);
+});
